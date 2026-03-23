@@ -116,10 +116,12 @@ jobs:
 
       - name: Deploy to Scaleway Serverless Container
         run: |
+          IMAGE="ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]'):${{ github.sha }}"
           scw container container update ${{ secrets.SCW_CONTAINER_ID }} \
-            registry-image=ghcr.io/$(echo '${{ github.repository }}' | tr '[:upper:]' '[:lower:]'):${{ github.sha }} \
-            region=${{ env.SCW_DEFAULT_REGION }} \
-            redeploy=true
+            registry-image="$IMAGE" \
+            region=${{ env.SCW_DEFAULT_REGION }}
+          scw container container deploy ${{ secrets.SCW_CONTAINER_ID }} \
+            region=${{ env.SCW_DEFAULT_REGION }}
         env:
           SCW_ACCESS_KEY: ${{ secrets.SCW_ACCESS_KEY }}
           SCW_SECRET_KEY: ${{ secrets.SCW_SECRET_KEY }}
