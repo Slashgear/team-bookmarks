@@ -1,5 +1,11 @@
 # @slashgear/team-bookmarks
 
+## 0.2.3
+
+### Patch Changes
+
+- 9bd0c35: Fix Scaleway deploy step: replace deprecated `redeploy=true` flag with explicit `scw container container deploy` command.
+
 ## 0.2.2
 
 ### Patch Changes
