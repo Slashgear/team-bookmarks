@@ -593,7 +593,7 @@ details[open] > .folder-summary {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0 0 0 / 0.7);
+  background: rgba(0 0 0 / 0.75);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
@@ -604,51 +604,44 @@ details[open] > .folder-summary {
 
 .modal {
   background: #1e1b4b;
-  border: 1px solid rgba(124 58 237 / 0.35);
+  border: 1px solid rgba(124 58 237 / 0.4);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 680px;
+  max-width: 700px;
   max-height: 90dvh;
-  overflow-y: auto;
-  box-shadow:
-    0 25px 60px rgba(0 0 0 / 0.5),
-    0 0 0 1px rgba(124 58 237 / 0.1);
+  box-shadow: 0 25px 60px rgba(0 0 0 / 0.6);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.25rem 1.5rem 1rem;
+  padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--border);
   flex-shrink: 0;
 }
 
 .modal-header h2 {
-  font-size: 1.0625rem;
+  font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
 }
 
-.modal-close {
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
-}
-
 .modal-body {
   padding: 1.25rem 1.5rem;
-  flex: 1;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
 }
 
 .modal-intro {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   color: var(--text-muted);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .modal-intro strong {
@@ -657,30 +650,29 @@ details[open] > .folder-summary {
 
 .modal-browsers {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 0.75rem;
 }
 
 .browser-card {
-  background: var(--surface);
+  background: rgba(255 255 255 / 0.04);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.625rem;
+  gap: 0.75rem;
   transition: border-color 0.15s;
 }
 
 .browser-card:hover {
-  border-color: rgba(124 58 237 / 0.4);
+  border-color: rgba(124 58 237 / 0.45);
 }
 
 .browser-icon {
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   color: #a78bfa;
-  flex-shrink: 0;
 }
 
 .browser-icon svg {
@@ -689,46 +681,47 @@ details[open] > .folder-summary {
 }
 
 .browser-card h3 {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
 }
 
 .browser-card ol {
   list-style: none;
-  counter-reset: step;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex: 1;
+  padding: 0;
+  margin: 0;
 }
 
 .browser-card ol li {
-  counter-increment: step;
   display: flex;
+  align-items: flex-start;
   gap: 0.5rem;
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
   line-height: 1.5;
 }
 
-.browser-card ol li::before {
-  content: counter(step);
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   width: 1.25rem;
   height: 1.25rem;
-  min-width: 1.25rem;
   background: var(--primary-light);
   color: #a78bfa;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   font-weight: 700;
   margin-top: 0.1rem;
 }
 
 .browser-card strong {
   color: var(--text);
+  font-weight: 600;
 }
 
 .browser-card kbd {
@@ -742,10 +735,11 @@ details[open] > .folder-summary {
 }
 
 .browser-link {
-  font-size: 0.8rem;
+  font-size: 0.775rem;
   color: #a78bfa;
   text-decoration: none;
   margin-top: auto;
+  padding-top: 0.25rem;
 }
 
 .browser-link:hover {
@@ -758,7 +752,7 @@ details[open] > .folder-summary {
   display: flex;
   justify-content: flex-end;
   gap: 0.5rem;
-  padding: 1rem 1.5rem 1.25rem;
+  padding: 1rem 1.5rem;
   border-top: 1px solid var(--border);
   flex-shrink: 0;
 }
@@ -781,5 +775,9 @@ details[open] > .folder-summary {
 
   .link-actions {
     opacity: 1;
+  }
+
+  .modal-browsers {
+    grid-template-columns: 1fr;
   }
 }

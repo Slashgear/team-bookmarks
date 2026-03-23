@@ -61,17 +61,29 @@ export function NetscapeExportModal({ file, onClose }: Props) {
               <h3>Chrome / Edge / Brave</h3>
               <ol>
                 <li>
-                  Open the menu <kbd>⋮</kbd> → <strong>Bookmarks</strong> →{" "}
-                  <strong>Bookmark manager</strong>
+                  <span class="step-num">1</span>
+                  <span>
+                    Open the menu <kbd>⋮</kbd> → <strong>Bookmarks</strong> →{" "}
+                    <strong>Bookmark manager</strong>
+                  </span>
                 </li>
                 <li>
-                  Click the menu <kbd>⋮</kbd> at the top right of the manager
+                  <span class="step-num">2</span>
+                  <span>
+                    Click the menu <kbd>⋮</kbd> at the top right of the manager
+                  </span>
                 </li>
                 <li>
-                  Select <strong>Import bookmarks</strong>
+                  <span class="step-num">3</span>
+                  <span>
+                    Select <strong>Import bookmarks</strong>
+                  </span>
                 </li>
                 <li>
-                  Choose the downloaded <code>.html</code> file
+                  <span class="step-num">4</span>
+                  <span>
+                    Choose the downloaded <code>.html</code> file
+                  </span>
                 </li>
               </ol>
               <a
@@ -109,17 +121,29 @@ export function NetscapeExportModal({ file, onClose }: Props) {
               <h3>Firefox</h3>
               <ol>
                 <li>
-                  Open the menu <kbd>☰</kbd> → <strong>Bookmarks</strong> →{" "}
-                  <strong>Manage Bookmarks</strong>
+                  <span class="step-num">1</span>
+                  <span>
+                    Open the menu <kbd>☰</kbd> → <strong>Bookmarks</strong> →{" "}
+                    <strong>Manage Bookmarks</strong>
+                  </span>
                 </li>
                 <li>
-                  Click <strong>Import and Backup</strong> in the toolbar
+                  <span class="step-num">2</span>
+                  <span>
+                    Click <strong>Import and Backup</strong> in the toolbar
+                  </span>
                 </li>
                 <li>
-                  Select <strong>Import Bookmarks from HTML…</strong>
+                  <span class="step-num">3</span>
+                  <span>
+                    Select <strong>Import Bookmarks from HTML…</strong>
+                  </span>
                 </li>
                 <li>
-                  Choose the downloaded <code>.html</code> file
+                  <span class="step-num">4</span>
+                  <span>
+                    Choose the downloaded <code>.html</code> file
+                  </span>
                 </li>
               </ol>
               <a
@@ -152,14 +176,23 @@ export function NetscapeExportModal({ file, onClose }: Props) {
               <h3>Safari</h3>
               <ol>
                 <li>
-                  Open <strong>File</strong> menu → <strong>Import From</strong> →{" "}
-                  <strong>Bookmarks HTML File…</strong>
+                  <span class="step-num">1</span>
+                  <span>
+                    Open <strong>File</strong> menu → <strong>Import From</strong> →{" "}
+                    <strong>Bookmarks HTML File…</strong>
+                  </span>
                 </li>
                 <li>
-                  Choose the downloaded <code>.html</code> file
+                  <span class="step-num">2</span>
+                  <span>
+                    Choose the downloaded <code>.html</code> file
+                  </span>
                 </li>
                 <li>
-                  Your bookmarks will appear in a new <strong>Imported</strong> folder
+                  <span class="step-num">3</span>
+                  <span>
+                    Your bookmarks will appear in a new <strong>Imported</strong> folder
+                  </span>
                 </li>
               </ol>
               <a
