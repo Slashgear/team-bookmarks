@@ -17,7 +17,8 @@
     "format:check": "oxfmt --check --ignore-path .oxfmtignore .",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "changeset publish"
+    "release": "changeset publish",
+    "prepare": "simple-git-hooks"
   },
   "dependencies": {
     "hono": "4.12.9",
@@ -34,6 +35,8 @@
     "@types/node": "22.13.14",
     "esbuild": "0.27.4",
     "jsdom": "29.0.1",
+    "lint-staged": "16.4.0",
+    "simple-git-hooks": "2.13.1",
     "oxfmt": "0.28.0",
     "oxlint": "1.56.0",
     "rollup-plugin-visualizer": "7.0.1",
@@ -44,11 +47,19 @@
   "engines": {
     "node": ">=22"
   },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm lint-staged"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs,css,html,json,yml,yaml,svg,md}": "oxfmt --ignore-path .oxfmtignore",
+    "*.{ts,tsx,js,mjs}": "oxlint"
+  },
   "packageManager": "pnpm@10.7.0",
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@gfx/zopfli",
       "esbuild",
-      "@gfx/zopfli"
+      "simple-git-hooks"
     ]
   }
 }
