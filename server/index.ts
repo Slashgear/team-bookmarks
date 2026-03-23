@@ -64,6 +64,19 @@ app.use("/*", async (c, next) => {
   }
 });
 
+// --- JSON Schema endpoint ---
+// Served with application/schema+json and open CORS so any editor or validator
+// can fetch it directly from any self-hosted instance.
+app.get("/schema.json", async (c) => {
+  const { readFile } = await import("node:fs/promises");
+  const content = await readFile("./dist/schema.json", "utf-8");
+  return c.body(content, 200, {
+    "Content-Type": "application/schema+json; charset=utf-8",
+    "Access-Control-Allow-Origin": "*",
+    "Cache-Control": "public, max-age=86400",
+  });
+});
+
 // --- Static files ---
 app.use(
   "/*",

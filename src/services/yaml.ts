@@ -1,33 +1,17 @@
 import * as jsYaml from "js-yaml";
-import { z } from "zod";
+import { BookmarkFileSchema } from "../schema.ts";
 import type { BookmarkFile, BookmarkFolder } from "../types.ts";
 
 // This entire module is lazy-loaded as a single chunk (js-yaml + zod + schemas).
 // It is preloaded via requestIdleCallback — see src/utils/preload.ts.
 
-const BookmarkLinkSchema = z.object({
-  label: z.string(),
-  url: z.string(),
-});
-
-const BookmarkFolderSchema: z.ZodType<Omit<BookmarkFolder, "id">> = z.object({
-  name: z.string(),
-  links: z.array(BookmarkLinkSchema).default([]),
-  folders: z.lazy(() => z.array(BookmarkFolderSchema)).default([]),
-});
-
-const BookmarkFileSchema = z.object({
-  name: z.string(),
-  folders: z.array(BookmarkFolderSchema).default([]),
-});
-
-type ParsedFile = z.infer<typeof BookmarkFileSchema>;
+type ParsedFile = { name: string; folders: Array<Omit<BookmarkFolder, "id"> & { folders: unknown[] }> };
 
 function attachIds(folder: ParsedFile["folders"][number]): BookmarkFolder {
   return {
     ...folder,
     id: crypto.randomUUID(),
-    folders: folder.folders.map(attachIds),
+    folders: (folder.folders as ParsedFile["folders"]).map(attachIds),
   };
 }
 
