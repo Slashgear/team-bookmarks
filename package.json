@@ -1,6 +1,6 @@
 {
   "name": "@slashgear/team-bookmarks",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "private": true,
   "description": "A lightweight open source web app to manage and share team bookmarks via YAML files.",
   "license": "MIT",
