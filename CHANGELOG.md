@@ -1,5 +1,11 @@
 # @slashgear/team-bookmarks
 
+## 0.2.2
+
+### Patch Changes
+
+- 4d713f8: Fix HTML export modal layout and add Scaleway Serverless Container deploy to release pipeline.
+
 ## 0.2.1
 
 ### Patch Changes
