@@ -1,9 +1,9 @@
 {
   "name": "@slashgear/team-bookmarks",
   "version": "0.1.0",
+  "private": true,
   "description": "A lightweight open source web app to manage and share team bookmarks via YAML files.",
   "license": "MIT",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -37,16 +37,13 @@
     "esbuild": "0.27.4",
     "jsdom": "29.0.1",
     "lint-staged": "16.4.0",
-    "simple-git-hooks": "2.13.1",
     "oxfmt": "0.28.0",
     "oxlint": "1.56.0",
     "rollup-plugin-visualizer": "7.0.1",
+    "simple-git-hooks": "2.13.1",
     "typescript": "6.0.2",
     "vite": "8.0.2",
     "vitest": "4.1.1"
-  },
-  "engines": {
-    "node": ">=22"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
@@ -54,6 +51,9 @@
   "lint-staged": {
     "*.{ts,tsx,js,mjs,css,html,json,yml,yaml,svg,md}": "oxfmt --ignore-path .oxfmtignore",
     "*.{ts,tsx,js,mjs}": "oxlint"
+  },
+  "engines": {
+    "node": ">=22"
   },
   "packageManager": "pnpm@10.7.0",
   "pnpm": {

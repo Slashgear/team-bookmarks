@@ -15,10 +15,7 @@
       }
     }
   },
-  "required": [
-    "name",
-    "folders"
-  ],
+  "required": ["name", "folders"],
   "additionalProperties": false,
   "$defs": {
     "__schema0": {
@@ -40,10 +37,7 @@
                 "type": "string"
               }
             },
-            "required": [
-              "label",
-              "url"
-            ],
+            "required": ["label", "url"],
             "additionalProperties": false
           }
         },
@@ -55,11 +49,7 @@
           }
         }
       },
-      "required": [
-        "name",
-        "links",
-        "folders"
-      ],
+      "required": ["name", "links", "folders"],
       "additionalProperties": false
     }
   }

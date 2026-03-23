@@ -5,7 +5,10 @@ import type { BookmarkFile, BookmarkFolder } from "../types.ts";
 // This entire module is lazy-loaded as a single chunk (js-yaml + zod + schemas).
 // It is preloaded via requestIdleCallback — see src/utils/preload.ts.
 
-type ParsedFile = { name: string; folders: Array<Omit<BookmarkFolder, "id"> & { folders: unknown[] }> };
+type ParsedFile = {
+  name: string;
+  folders: Array<Omit<BookmarkFolder, "id"> & { folders: unknown[] }>;
+};
 
 function attachIds(folder: ParsedFile["folders"][number]): BookmarkFolder {
   return {
