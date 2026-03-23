@@ -61,7 +61,11 @@ export function buildJson(file: BookmarkFile): string {
 
 export async function downloadYaml(file: BookmarkFile): Promise<void> {
   const { serializeYaml } = await import("./yaml.ts");
-  triggerDownload(serializeYaml(file), "bookmarks.yml", "text/yaml;charset=utf-8");
+  const appUrl = window.location.origin + window.location.pathname;
+  const header =
+    `# Team Bookmarks — to edit this file, open it in the app: ${appUrl}\n` +
+    `# yaml-language-server: $schema=${appUrl}schema.json\n\n`;
+  triggerDownload(header + serializeYaml(file), "bookmarks.yml", "text/yaml;charset=utf-8");
 }
 
 export function downloadNetscape(file: BookmarkFile): void {
