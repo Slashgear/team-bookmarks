@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A lightweight open source web app to manage and share team bookmarks via YAML files.",
   "license": "MIT",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,7 +17,7 @@
     "format:check": "oxfmt --check --ignore-path .oxfmtignore .",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "pnpm build && changeset publish"
+    "release": "changeset publish"
   },
   "dependencies": {
     "hono": "4.12.9",
