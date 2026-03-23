@@ -1,0 +1,53 @@
+{
+  "name": "@slashgear/team-bookmarks",
+  "version": "0.1.0",
+  "description": "A lightweight open source web app to manage and share team bookmarks via YAML files.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node scripts/compress.mjs && esbuild server/index.ts --bundle --platform=node --target=node22 --outfile=dist/server.js",
+    "build:analyze": "ANALYZE=true vite build",
+    "preview": "node dist/server.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "oxlint ",
+    "format": "oxfmt --ignore-path .oxfmtignore .",
+    "format:check": "oxfmt --check --ignore-path .oxfmtignore .",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "release": "pnpm build && changeset publish"
+  },
+  "dependencies": {
+    "hono": "4.12.9",
+    "js-yaml": "4.1.0",
+    "preact": "10.29.0",
+    "zod": "4.3.6"
+  },
+  "devDependencies": {
+    "@changesets/cli": "2.30.0",
+    "@gfx/zopfli": "1.0.15",
+    "@hono/node-server": "1.19.11",
+    "@preact/preset-vite": "2.10.5",
+    "@types/js-yaml": "4.0.9",
+    "@types/node": "22.13.14",
+    "esbuild": "0.27.4",
+    "jsdom": "29.0.1",
+    "oxfmt": "0.28.0",
+    "oxlint": "1.56.0",
+    "rollup-plugin-visualizer": "7.0.1",
+    "typescript": "6.0.2",
+    "vite": "8.0.2",
+    "vitest": "4.1.1"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.7.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "@gfx/zopfli"
+    ]
+  }
+}

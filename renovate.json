@@ -1,0 +1,59 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "schedule": ["before 9am on Monday"],
+  "timezone": "Europe/Paris",
+  "labels": ["dependencies"],
+  "automerge": false,
+  "packageRules": [
+    {
+      "description": "Automerge patch updates",
+      "matchUpdateTypes": ["patch"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Automerge minor devDependency updates",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor"],
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Group Oxc tools (oxlint + oxfmt)",
+      "matchPackageNames": ["oxlint", "oxfmt"],
+      "groupName": "oxc"
+    },
+    {
+      "description": "Group Preact packages",
+      "matchPackagePatterns": ["^preact", "^@preact/"],
+      "groupName": "preact"
+    },
+    {
+      "description": "Group Vite + plugins",
+      "matchPackagePatterns": ["^vite", "^@vitejs/", "rollup-plugin-visualizer"],
+      "groupName": "vite"
+    },
+    {
+      "description": "Group Hono packages",
+      "matchPackagePatterns": ["^hono", "^@hono/"],
+      "groupName": "hono"
+    },
+    {
+      "description": "Group GitHub Actions",
+      "matchManagers": ["github-actions"],
+      "groupName": "github-actions",
+      "automerge": true,
+      "automergeType": "pr",
+      "automergeStrategy": "squash"
+    },
+    {
+      "description": "Require manual review for major updates",
+      "matchUpdateTypes": ["major"],
+      "automerge": false,
+      "labels": ["dependencies", "major"]
+    }
+  ]
+}
