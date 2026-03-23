@@ -41,64 +41,62 @@ export function App() {
 
   return (
     <>
-      {showHtmlModal && (
-        <NetscapeExportModal file={file} onClose={() => setShowHtmlModal(false)} />
-      )}
-    <main class="layout">
-      <header class="collection-header">
-        <h1>{file.name}</h1>
-        <nav class="collection-actions" aria-label="Collection actions">
-          <button type="button" class="primary" onClick={() => bm.addFolder(null, "New folder")}>
-            + Folder
-          </button>
-          <button type="button" onClick={() => importRef.current?.click()}>
-            Import YAML
-          </button>
-          <div class="export-group" role="group" aria-label="Export">
-            <span class="export-label">Export:</span>
-            <button type="button" onClick={() => downloadYaml(file)}>
-              YAML
+      {showHtmlModal && <NetscapeExportModal file={file} onClose={() => setShowHtmlModal(false)} />}
+      <main class="layout">
+        <header class="collection-header">
+          <h1>{file.name}</h1>
+          <nav class="collection-actions" aria-label="Collection actions">
+            <button type="button" class="primary" onClick={() => bm.addFolder(null, "New folder")}>
+              + Folder
             </button>
-            <button type="button" onClick={() => setShowHtmlModal(true)}>
-              HTML
+            <button type="button" onClick={() => importRef.current?.click()}>
+              Import YAML
             </button>
-            <button type="button" onClick={() => downloadJson(file)}>
-              JSON
+            <div class="export-group" role="group" aria-label="Export">
+              <span class="export-label">Export:</span>
+              <button type="button" onClick={() => downloadYaml(file)}>
+                YAML
+              </button>
+              <button type="button" onClick={() => setShowHtmlModal(true)}>
+                HTML
+              </button>
+              <button type="button" onClick={() => downloadJson(file)}>
+                JSON
+              </button>
+            </div>
+            <button type="button" class="ghost" onClick={bm.reset}>
+              Reset
             </button>
-          </div>
-          <button type="button" class="ghost" onClick={bm.reset}>
-            Reset
-          </button>
-        </nav>
-        <input
-          ref={importRef}
-          type="file"
-          accept=".yml,.yaml"
-          aria-label="Import YAML file"
-          class="visually-hidden"
-          onChange={handleImport}
-        />
-      </header>
+          </nav>
+          <input
+            ref={importRef}
+            type="file"
+            accept=".yml,.yaml"
+            aria-label="Import YAML file"
+            class="visually-hidden"
+            onChange={handleImport}
+          />
+        </header>
 
-      <section aria-label="Bookmarks">
-        {file.folders.length === 0 ? (
-          <p class="empty-hint">No folders yet. Add one above.</p>
-        ) : (
-          file.folders.map((folder) => (
-            <FolderNode
-              key={folder.id}
-              folder={folder}
-              onAddFolder={bm.addFolder}
-              onRenameFolder={bm.renameFolder}
-              onRemoveFolder={bm.removeFolder}
-              onAddLink={bm.addLink}
-              onUpdateLink={bm.updateLink}
-              onRemoveLink={bm.removeLink}
-            />
-          ))
-        )}
-      </section>
-    </main>
+        <section aria-label="Bookmarks">
+          {file.folders.length === 0 ? (
+            <p class="empty-hint">No folders yet. Add one above.</p>
+          ) : (
+            file.folders.map((folder) => (
+              <FolderNode
+                key={folder.id}
+                folder={folder}
+                onAddFolder={bm.addFolder}
+                onRenameFolder={bm.renameFolder}
+                onRemoveFolder={bm.removeFolder}
+                onAddLink={bm.addLink}
+                onUpdateLink={bm.updateLink}
+                onRemoveLink={bm.removeLink}
+              />
+            ))
+          )}
+        </section>
+      </main>
     </>
   );
 }
