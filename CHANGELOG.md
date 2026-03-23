@@ -1,5 +1,11 @@
 # @slashgear/team-bookmarks
 
+## 0.2.1
+
+### Patch Changes
+
+- 3ec2cfb: Fix changeset and Docker release pipeline for private packages.
+
 ## 0.2.0
 
 ### Minor Changes
