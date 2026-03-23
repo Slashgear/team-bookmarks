@@ -1,12 +1,14 @@
-import { useRef } from "preact/hooks";
+import { useRef, useState } from "preact/hooks";
 import { FolderNode } from "./components/FolderNode.tsx";
+import { NetscapeExportModal } from "./components/NetscapeExportModal.tsx";
 import { Welcome } from "./components/Welcome.tsx";
 import { useBookmarks } from "./hooks/useBookmarks.ts";
-import { downloadJson, downloadNetscape, downloadYaml } from "./services/export.ts";
+import { downloadJson, downloadYaml } from "./services/export.ts";
 
 export function App() {
   const bm = useBookmarks();
   const importRef = useRef<HTMLInputElement>(null);
+  const [showHtmlModal, setShowHtmlModal] = useState(false);
 
   function handleImport(e: Event) {
     const input = e.currentTarget as HTMLInputElement;
@@ -38,11 +40,15 @@ export function App() {
   const file = bm.file;
 
   return (
+    <>
+      {showHtmlModal && (
+        <NetscapeExportModal file={file} onClose={() => setShowHtmlModal(false)} />
+      )}
     <main class="layout">
       <header class="collection-header">
         <h1>{file.name}</h1>
         <nav class="collection-actions" aria-label="Collection actions">
-          <button type="button" onClick={() => bm.addFolder(null, "New folder")}>
+          <button type="button" class="primary" onClick={() => bm.addFolder(null, "New folder")}>
             + Folder
           </button>
           <button type="button" onClick={() => importRef.current?.click()}>
@@ -53,7 +59,7 @@ export function App() {
             <button type="button" onClick={() => downloadYaml(file)}>
               YAML
             </button>
-            <button type="button" onClick={() => downloadNetscape(file)}>
+            <button type="button" onClick={() => setShowHtmlModal(true)}>
               HTML
             </button>
             <button type="button" onClick={() => downloadJson(file)}>
@@ -93,5 +99,6 @@ export function App() {
         )}
       </section>
     </main>
+    </>
   );
 }
