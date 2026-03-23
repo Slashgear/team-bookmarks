@@ -552,6 +552,16 @@ details[open] > .folder-summary {
   line-height: 1.55;
 }
 
+.welcome-card p a {
+  color: #a78bfa;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.welcome-card p a:hover {
+  color: #c4b5fd;
+}
+
 .welcome-card label {
   font-size: 0.8125rem;
   font-weight: 500;
